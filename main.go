@@ -46,11 +46,19 @@ type Weather struct{
 
 func main() {
 	var city string
-	city = "Hanoi"
+	// city = "Hanoi"
 	
-	if len(os.Args) >= 2 {
+	// if len(os.Args) >= 2 {
+	// 	city = os.Args[1]
+	// }
+
+
+	if len(os.Args) < 2 {
+		panic("Missing Location Argument!")
+	} else{
 		city = os.Args[1]
 	}
+
 
 	res, err := http.Get("http://api.weatherapi.com/v1/forecast.json?key=433f89aaaac44b2585183516231609&q=" + city +"&days=1&aqi=yes&alerts=yes")
 	if err != nil {
